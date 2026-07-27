@@ -1,0 +1,38 @@
+Staff
+- staff_id 
+- name
+- phone
+- email
+- pay_rate
+- bank_account
+
+Client
+- client_id
+- name
+- phone_number
+- email
+- identity
+- discount BOOL (0=false, 1=true)
+
+Product
+- product_id
+- name
+- price
+- image
+- stock
+
+Appointment
+- appointment_id
+- date
+- time
+- client_id
+- staff_member
+
+Purchase
+- purchase_id
+- date
+- time
+- client_id
+- product_id
+- quantity
+- total_price
