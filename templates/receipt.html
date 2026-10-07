@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {
+                font-family: Arial;
+            }
+            h1 {
+                color: #51247A;
+            }
+            table { 
+                color: #51247A;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>UQ Hair</h1>
+        <p>Hey {{purchase["c_name"]}}, </p>
+        <p>Purchase Receipt - {{purchase["date"]}} {{purchase["time"]}}</p>
+        <table>
+            <tr> <td>{{purchase[p_name]}}</td> <td>x {{purchase["quantity"]}}</td> </tr>
+            <tr> <td>Total Price:</td> <td>${{purchase["total_price"]}}</td> </tr>
+        </table>
+        <p>Thanks for visiting UQ Hair, we hope to see you again soon</p>
+    </body>
+</html>

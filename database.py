@@ -1,4 +1,4 @@
-from helpers import sql_commit
+from helpers import sql_commit, convert_image
 
 create_staff = """
 CREATE TABLE IF NOT EXISTS staff (
@@ -66,21 +66,26 @@ CREATE TABLE IF NOT EXISTS purchase (
 """
 
 staff = (
-    ("Hannah Bean", "123-456-7890", "hannah.bean@hearth.com", 90.00, "676-456 987278333"),
-    ("Marly Papa", "098-765-4321", "marly.papa@hearth.com", 100.00, "656-486 787367282"),
-    ("Caleb Underhill", "673-782-8178", "caleb.underhill@hearth.com", 85.00, "666-444 782739201")
+    ("Hannah Bean", "123-456-7890", "hannah.bean@hearth.com", 90, "676-456 987278333"),
+    ("Marly Papa", "098-765-4321", "marly.papa@hearth.com", 100, "656-486 787367282"),
+    ("Zach Ploetz", "673-782-8178", "zach.spaccey@hearth.com", 85, "666-444 782739201")
 )
 
 client = (
     ("Matt Night", "767-9818-1234", "matt.night@farm.com", 1),
-    ("Shai Hobby", "625-728-1234", "shai.hobby@tunes.com", 0),
-    ("Nanny Fire", "819-462-9180", "nanny.fire@coffee.com", 0)
+    ("Cara Cat", "625-728-1234", "cara.cat@tarin.com", 0),
+    ("Tumble Fred", "819-462-9180", "tumble.bot@bots.com", 0)
 )
 
+guava_image = convert_image("./images/guava.png")
+shampoo_image = convert_image("./images/shampoo.jpg")
+conditioner_image = convert_image("./images/conditioner.jpg")
+
+
 products = (
-    ("Guava Hair Mask", 62, 5),
-    ("Shampoo No.1 L'Hydratation", 77, 10),
-    ("Conditioner No.1 L'Hydratation", 89.5, 0)
+    ("Guava Hair Mask", 62, guava_image, 5),
+    ("Shampoo No.1 L'Hydratation", 77, shampoo_image, 10),
+    ("Conditioner No.1 L'Hydratation", 89.5, conditioner_image, 0)
 )
  
 appointments = (
@@ -105,8 +110,8 @@ VALUES (?, ?, ?, ?)
 """
 
 insert_product = """
-INSERT INTO product (name, price, stock)
-VALUES (?, ?, ?)
+INSERT INTO product (name, price, image, stock)
+VALUES (?, ?, ?, ?)
 """ 
 
 insert_appointment = """
@@ -130,5 +135,3 @@ def create_database():
     sql_commit(insert_product, products)
     sql_commit(insert_appointment, appointments)
     sql_commit(insert_purchase, purchases)
-    
-create_database()

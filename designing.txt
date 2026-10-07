@@ -1,9 +1,9 @@
 Staff
 - staff_id 
-- name
-- phone
-- email
-- pay_rate
+- name (no rules)
+- phone (start with 04, has to be 10 digets long)
+- email (has to have 1 '@')
+- pay_rate (float, positive and over minimum wage)
 - bank_account
 
 Client
